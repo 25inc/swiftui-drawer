@@ -27,7 +27,7 @@ internal extension Drawer {
             + restingHeight - value.location.y,
             range: activeBound,
             spring: springHeight)
-
+        didChange?(height)
         animation = Animation?.none
     }
     

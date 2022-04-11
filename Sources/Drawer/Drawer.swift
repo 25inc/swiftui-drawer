@@ -28,6 +28,9 @@ public struct Drawer<Content>: View where Content: View {
     /// A callback executed when the drawer reaches a restingHeight
     internal var didRest: ((_ height: CGFloat) -> ())? = nil
     
+    /// A callback executed when the drawer change a restingHeight
+    internal var didChange: ((_ height: CGFloat) -> ())? = nil
+    
     // MARK: Orientation
     
     public struct SizeClass: Equatable {
@@ -96,6 +99,7 @@ internal extension Drawer {
         restingHeight: CGFloat,
         springHeight: CGFloat,
         didRest: ((_ height: CGFloat) -> ())?,
+        didChange: ((_ height: CGFloat) -> ())?,
         didLayoutForSizeClass: ((SizeClass) -> ())?,
         impactGenerator: UIImpactFeedbackGenerator?,
         content: Content
@@ -105,6 +109,7 @@ internal extension Drawer {
         self._restingHeight = .init(initialValue: restingHeight)
         self.springHeight = springHeight
         self.didRest = didRest
+        self.didChange = didChange
         self.didLayoutForSizeClass = didLayoutForSizeClass
         self.content = content
         self.impactGenerator = impactGenerator

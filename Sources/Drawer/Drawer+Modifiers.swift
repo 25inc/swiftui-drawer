@@ -19,6 +19,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             content: content)
@@ -34,6 +35,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: max(spring, 0),
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             content: content)
@@ -50,6 +52,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             content: content)
@@ -65,6 +68,23 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
+            didLayoutForSizeClass: didLayoutForSizeClass,
+            impactGenerator: impactGenerator,
+            content: content)
+    }
+    
+    /// A callback to receive updates when the drawer reaches a new resting level
+    /// - Parameter didRest: The callback to handle updates
+    /// - Returns: Drawer
+    func onChange(_ didChange: @escaping (_ height: CGFloat) -> ()) -> Drawer {
+        return Drawer(
+            heights: $heights,
+            height: height,
+            restingHeight: restingHeight,
+            springHeight: springHeight,
+            didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             content: content)
@@ -81,6 +101,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             content: content)
